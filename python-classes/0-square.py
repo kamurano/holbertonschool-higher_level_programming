@@ -1,3 +1,5 @@
 #!/usr/bin/python3
+"""Define a class Square"""
 class Square:
-    __dict__ = {}
+    """Empty class"""
+    pass
