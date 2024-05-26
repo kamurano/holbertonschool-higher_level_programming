@@ -1,3 +1,3 @@
 #!/usr/bin/python3
 def raise_exception():
-    raise Exception("An exception occurred")
+    raise "Exception has been raised"
