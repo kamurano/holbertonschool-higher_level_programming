@@ -1,4 +1,7 @@
-#!/bin/usr/python3
+#!/usr/bin/python3
+"""Function for adding 2 integers"""
+
+
 def add_integer(a, b=98):
     """Function that adds 2 integers."""
     listo = [int, float]
