@@ -80,3 +80,7 @@ def is_position_safe(board, row, col, N):
 
     return True
 
+
+if __name__ == "__main__":
+    """Instantiation of code"""
+    main()
