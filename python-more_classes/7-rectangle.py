@@ -55,8 +55,8 @@ class Rectangle:
         """Method to return the string representation of the rectangle"""
         if self.width == 0 or self.height == 0:
             return ""
-        listo = [f"{self.print_symbol}" * self.width for i in range(self.height)]
-        return "\n".join(listo)
+        lis = [f"{self.print_symbol}" * self.width for i in range(self.height)]
+        return "\n".join(lis)
 
     def __repr__(self):
         """Method to return the string representation of the rectangle"""
