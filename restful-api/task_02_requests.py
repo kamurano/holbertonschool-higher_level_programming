@@ -12,7 +12,7 @@ def fetch_and_save_posts():
     response = requests.get('https://jsonplaceholder.typicode.com/posts')
     posts = response.json()
     with open('posts.csv', 'w') as file:
-        file.write("id, title, body\n")
+        file.write("id,title,body\n")
         for post in posts:
             file.write(f"{post['id']}, {post['title']}, {post['body']}\n")
 
