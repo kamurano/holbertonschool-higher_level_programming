@@ -11,6 +11,7 @@ def fetch_and_print_posts():
 def fetch_and_save_posts():
     response = requests.get('https://jsonplaceholder.typicode.com/posts')
     posts = response.json()
+    file.write("id, title, body\n")
     with open('posts.csv', 'w') as file:
         for post in posts:
             file.write(f"{post['id']}, {post['title']}, {post['body']}\n")
