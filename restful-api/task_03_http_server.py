@@ -5,6 +5,10 @@ import http.server
 class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
+        if self.path == '/':
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
         if self.path == '/data':
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
