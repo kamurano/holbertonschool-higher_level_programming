@@ -30,7 +30,7 @@ def user(username):
 
 @app.route('/status')
 def status():
-    return jsonify({"status": "ok"})
+    return "OK"
 
 if __name__ == "__main__":
     app.run()
