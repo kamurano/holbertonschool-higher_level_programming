@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-users = {}
+all_users = {}
 
 @app.route('/')
 def home():
@@ -11,23 +11,25 @@ def home():
 
 @app.route('/data')
 def data():
-    usernames = list(users.keys())
+    usernames = list(all_users.keys())
     return jsonify(usernames)
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
     if request.method == 'POST':
-        user = list(request.get_json().values())[0]
+        users = request.get_json()
+        for user in users:
+            user_val = users[user]
+            all_users[user] = user_val
         print(user)
-        users[user['username']] = user
-        return jsonify({"message": "User added", user['username'] : user})
+        return jsonify({"message": "User added", "user" : users})
 
 
 
 @app.route('/users/<username>')
 def user(username):
-    if username in users:
-        return jsonify(users[username])
+    if username in all_users:
+        return jsonify(all_users[username])
     else:
         return jsonify({"error": "User not found"})
 
