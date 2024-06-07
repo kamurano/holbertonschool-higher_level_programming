@@ -17,14 +17,9 @@ def data():
 @app.route('/add_user', methods=['POST'])
 def add_user():
     if request.method == 'POST':
-        users = request.get_json()
-        for user in users:
-            user_val = users[user]
-            all_users[user] = user_val
-        print(user)
-        return jsonify({"message": "User added", "user" : users})
-
-
+        user = request.get_json()
+        all_users[user['username']] = user
+        return jsonify({"message": "User added", "user" : user})
 
 @app.route('/users/<username>')
 def user(username):
