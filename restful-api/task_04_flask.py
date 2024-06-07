@@ -11,16 +11,18 @@ def home():
 
 @app.route('/data')
 def data():
-    usernames = users.keys()
+    usernames = list(users.keys())
     return jsonify(usernames)
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
     if request.method == 'POST':
-        user = request.get_json()
-        users[user['name']] = user
-        return jsonify({"message": "User added", user['name'] : user})
-        
+        user = list(request.get_json().values())[0]
+        print(user)
+        users[user['username']] = user
+        return jsonify({"message": "User added", user['username'] : user})
+
+
 
 @app.route('/users/<username>')
 def user(username):
