@@ -20,7 +20,7 @@ def add_user():
         user = request.get_json()
         if user is None:
             return jsonify({"error": "No data provided"}), 400
-        if user["username"] is None:
+        if user["username"] not in user.keys():
             return jsonify({"error": "No username provided"}), 400
         if user['username'] in all_users.keys():
             return jsonify({"error": "User already exists"}), 400
