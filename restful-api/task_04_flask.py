@@ -21,8 +21,8 @@ def data():
 def add_user():
     if request.method == 'POST':
         user = request.get_json()
-        if user is None:
-            return jsonify({"error": "No data provided"}), 400
+        if data is None or data.get('username') is None:
+            return jsonify({'error': 'Username is required'}), 400
         if "username" not in user or user["username"] == "":
             return jsonify({"error": "Invalid username"}), 400
         if user['username'] in all_users:
