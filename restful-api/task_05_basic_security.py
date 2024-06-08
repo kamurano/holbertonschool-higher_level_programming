@@ -12,7 +12,9 @@ app.config['JWT_SECRET_KEY'] = 'someSuperSuperSecretKey'
 jwt = JWTManager(app)
 
 users = {
-}
+        "user1": {"password": generate_password_hash("password"), "role": "user"},
+        "admin1": {"password": generate_password_hash("adminpassword"), "role": "admin"}
+        }
 
 
 @app.route("/basic-protected")
