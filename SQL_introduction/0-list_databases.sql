@@ -1,1 +1,2 @@
+-- Script.
 SHOW DATABASES;
