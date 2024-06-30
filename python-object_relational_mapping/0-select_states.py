@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-SQL
+Connecting to database and listing it
 """
 
 if __name__ == "__main__":
@@ -17,11 +17,11 @@ if __name__ == "__main__":
     cur = db.cursor()
     try:
         cur.execute("""SELECT * FROM states ORDER BY id""")
-        records = cur.fetchall()
+        rows = cur.fetchall()
     except MySQLdb.Error as e:
         print(e)
 
-    for row in records:
+    for row in rows:
         print(row)
 
     cur.close()
