@@ -1,23 +1,28 @@
 #!/usr/bin/python3
-"""States"""
+"""
+SQL
+"""
 
+if __name__ == "__main__":
+    import MySQLdb
+    from sys import argv
 
-if __name__ == '__main__':
-    from sys import argv                                                                                                    import MySQLdb
     db = MySQLdb.connect(
-        user=argv[1],
-        password=argv[2],
-        database=argv[3]
-    )
-    cursor = db.cursor()
+            host="localhost",
+            port=3306,
+            user=argv[1],
+            passwd=argv[2],
+            db=argv[3]
+            )
+    cur = db.cursor()
+    try:
+        cur.execute("""SELECT * FROM states ORDER BY id""")
+        records = cur.fetchall()
+    except MySQLdb.Error as e:
+        print(e)
 
-    executed = f"SELECT * FROM states"
-    records = cursor.execute(executed).fetchall()
+    for row in records:
+        print(row)
 
-    for state in records:
-        print(state)
-
-    if cursor:
-        cursor.close()
-    if db:
-        db.close()
+    cur.close()
+    db.close()
