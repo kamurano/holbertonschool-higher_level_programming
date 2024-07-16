@@ -5,9 +5,9 @@ import os
 def generate_invitations(template_content, attendees):
     x = 1
     for attendee in attendees:
+        if not (os.path.exists(f"output_{x}.txt")):
+            return
         try:
-            if not (os.path.exists(f"output_{x}.txt")):
-                return
             with open(f"output_{x}.txt", 'w') as f:
                 invitation = template_content.format(**attendee)
                 f.write(invitation)
