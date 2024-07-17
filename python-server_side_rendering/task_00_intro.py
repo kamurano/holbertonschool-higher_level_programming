@@ -11,14 +11,14 @@ def generate_invitations(template_content, attendees):
         if not os.path.exists(f"output_{x}.txt"):
             return "Template is empty, no output files generated."
         with open(f"output_{x}.txt", 'w') as f:
-            try:
-                attendee = {k: v if v is not None else "N/A" for k, v in attendee.items()}
-                invitation = template_content.format(**attendee)
-                f.write(invitation)
-                x += 1
-            except Exception as e:
-                print(e)
-                continue
+            # try:
+            attendee = {k: v if v is not None else "N/A" for k, v in attendee.items()}
+            invitation = template_content.format(**attendee)
+            f.write(invitation)
+            x += 1
+            # except Exception as e:
+                # print(e)
+                # continue
             
             
 if __name__ == "__name__":
